@@ -24,7 +24,7 @@ with col1:
         st.video(url)
 
     with st.expander('SubContent2...'):
-        st.subheader('Image Content...')
+        st.subheader('./Image Content...')
         st.image('images/catdog.jpg')
 
     with st.expander('SubContent3...'):
@@ -69,3 +69,4 @@ with col2:
     with st.expander('Tips...'):
 
         st.info('Tips.........')
+
