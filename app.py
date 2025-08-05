@@ -25,7 +25,7 @@ with col1:
 
     with st.expander('SubContent2...'):
         st.subheader('Image Content...')
-        st.image('./images/catdog.jpg')
+        st.image('images/catdog.jpg')
 
     with st.expander('SubContent3...'):
         st.subheader('HTML Content...')
@@ -67,4 +67,5 @@ with col1:
 
 with col2:
     with st.expander('Tips...'):
+
         st.info('Tips.........')
