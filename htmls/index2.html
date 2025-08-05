@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나뭇잎 잎맥 분류기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flexboxgrid@6.3.1/dist/flexboxgrid.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .leaf-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .result {
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        .result.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-green-600 text-white p-4">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">나뭇잎 잎맥 분류기</h1>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4">
+        <!-- Tutorial Section -->
+        <div class="mb-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-4">사용 방법</h2>
+            <ol class="list-decimal pl-6">
+                <li class="mb-2">나뭇잎의 가로 길이(cm)를 입력합니다.</li>
+                <li class="mb-2">나뭇잎의 세로 길이(cm)를 입력합니다.</li>
+                <li class="mb-2">분류하기 버튼을 클릭합니다.</li>
+                <li>결과를 확인합니다.</li>
+            </ol>
+        </div>
+
+        <!-- Input Form -->
+        <div class="leaf-form bg-white">
+            <div class="mb-4">
+                <label for="width" class="block text-gray-700 mb-2">가로 길이 (cm)</label>
+                <input type="number" id="width" step="0.1" class="w-full p-2 border rounded" required>
+            </div>
+            <div class="mb-4">
+                <label for="height" class="block text-gray-700 mb-2">세로 길이 (cm)</label>
+                <input type="number" id="height" step="0.1" class="w-full p-2 border rounded" required>
+            </div>
+            <button onclick="classifyLeaf()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
+                분류하기
+            </button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result" class="result mt-8 p-4 bg-white rounded-lg shadow text-center">
+            <h3 class="text-xl font-bold mb-2">분류 결과</h3>
+            <p id="classification" class="text-lg text-gray-700"></p>
+        </div>
+    </main>
+
+    <script>
+        // Sample data handling
+        const sampleData = [
+            {width: 5.2, height: 18.4, type: "나란히 맥"},
+            {width: 6.3, height: 20.1, type: "나란히 맥"},
+            // More samples can be added here
+        ];
+
+        // Classification function
+        function classifyLeaf() {
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (!width || !height) {
+                alert('가로와 세로 길이를 모두 입력해주세요.');
+                return;
+            }
+
+            // Simple classification logic based on sample data
+            const result = "나란히 맥"; // For this demo, always returns parallel veins
+            
+            const resultElement = document.getElementById('result');
+            const classificationElement = document.getElementById('classification');
+            
+            classificationElement.textContent = `이 나뭇잎은 ${result} 입니다.`;
+            resultElement.classList.add('show');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add any initialization code here
+        });
+    </script>
+</body>
+</html>
